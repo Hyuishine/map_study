@@ -2,7 +2,7 @@
  * @Author: 黄宇/Hyuishine
  * @Date: 2021-09-27 11:04:28
  * @LastEditors: 黄宇/Hyuishine
- * @LastEditTime: 2021-09-28 10:07:34
+ * @LastEditTime: 2021-09-28 14:26:50
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -61,148 +61,45 @@
 
                 chartVM.setOption(
                     {
-                        backgroundColor: '#154e90',
-                        graphic: [{
-                            type: 'group',
-                            left: 198,
-                            top: 46,
-                            children: [{
-                                type: 'line',
-                                left: 0,
-                                top: -20,
-                                shape: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 60,
-                                    y2: 0
-                                },
-                                style: {
-                                    stroke: 'rgba(147, 235, 248, .8)',
-                                }
-                            }, {
-                                type: 'line',
-                                left: 0,
-                                top: 20,
-                                shape: {
-                                    x1: 0,
-                                    y1: 0,
-                                    x2: 60,
-                                    y2: 0
-                                },
-                                style: {
-                                    stroke: 'rgba(147, 235, 248, .8)',
-                                }
-                            }]
-                        }, {
-                            id: 'asd',
-                            type: 'group',
-                            children: [{
-                                type: 'polyline',
-                                left: 90,
-                                top: -12,
-                                style: {
-                                    stroke: 'transparent',
-
-                                },
-                                // onclick: function () {
-                                //     var name = this.style.key;
-                                //     handleEvents.resetOption(chart, option, name);
-                                // }
-                            }, {
-                                type: 'text',
-                                left: 0,
-                                top: 'middle',
-                                style: {
-                                    text: '江西省',
-                                    textAlign: 'center',
-                                    fill: '#eee',
-                                    font: '18px "Microsoft YaHei", sans-serif'
-                                },
-                                // onclick: function () {
-                                //     handleEvents.resetOption(chart, option, '江西');
-                                // }
-                            }, {
-                                type: 'text',
-                                left: 0,
-                                top: 10,
-                                style: {
-                                    text: 'JIANGXI',
-                                    textAlign: 'center',
-                                    fill: style.textColor,
-                                    font: '12px "Microsoft YaHei", sans-serif',
-                                },
-                                // onclick: function () {
-                                //     handleEvents.resetOption(chart, option, '江西');
-                                // }
-                            }]
-                        }],
+                        backgroundColor: '#F6F7F8', // 背景颜色
                         geo: {
                             map: '江西',
-                            // roam: true,
-                            zoom: 1,
+                            zoom: 1, // 此处控制缩放
+                            // 此处控制字体
                             label: {
                                 normal: {
                                     show: true,
                                     textStyle: {
-                                        color: '#fff'
-                                    }
-                                },
-                                emphasis: {
-                                    textStyle: {
-                                        color: '#fff'
+                                        color: '#333'
                                     }
                                 }
                             },
                             itemStyle: {
                                 normal: {
-                                    borderColor: 'rgba(147, 235, 248, 1)',
-                                    borderWidth: 1,
-                                    areaColor: {
-                                        type: 'radial',
-                                        x: 0.5,
-                                        y: 0.5,
-                                        r: 0.8,
-                                        colorStops: [{
-                                            offset: 0,
-                                            color: 'rgba(147, 235, 248, 0)' // 0% 处的颜色
-                                        }, {
-                                            offset: 1,
-                                            color: 'rgba(147, 235, 248, .2)' // 100% 处的颜色
-                                        }],
-                                        globalCoord: false // 缺省为 false
-                                    },
-                                    shadowColor: 'rgba(128, 217, 248, 1)',
-                                    // shadowColor: 'rgba(255, 255, 255, 1)',
-                                    shadowOffsetX: -2,
-                                    shadowOffsetY: 2,
-                                    shadowBlur: 10
+                                    borderColor: '#22B0F4', // 边框颜色
+                                    borderWidth: 2, // 边框厚度
+                                    // shadowColor: 'rgba(34,176,244,.5)', // 阴影颜色
+                                    // shadowBlur: 10, // 阴影扩散程度
+                                    areaColor: 'white' // 背景颜色
                                 },
-                                emphasis: {
+                                emphasis: { // 选中效果
                                     areaColor: '#389BB7',
                                     borderWidth: 0
                                 }
                             },
-                            regions: [{
-                                name: 'sf',
-                                itemStyle: {
-                                    normal: {
-                                        areaColor: '#389BB7'
-                                    }
-                                },
-                                label: {
-                                    normal: {
-                                        show: 'sd',
-                                        textStyle: {
-                                            color: '#fff'
-                                        }
+                            //! 此处控制填色
+                            regions: [
+                                {
+                                    name: '吉安市',
+                                    itemStyle: {
+                                        areaColor: 'red',
+                                        color: 'red'
                                     }
                                 }
-                            }]
+                            ]
                         },
-                        series: [{
-                            type: 'effectScatter',
-                            coordinateSystem: 'geo',
-                        }]
+                        //! 此处控制描点
+                        series: []
                     }
 
                 )
@@ -352,7 +249,7 @@
                             ],
                             "encodeOffsets": [
                                 [
-                                    120067, 
+                                    120067,
                                     29302
                                 ]
                             ]
