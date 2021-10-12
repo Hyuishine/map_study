@@ -2,7 +2,7 @@
  * @Author: 黄宇/Hyuishine
  * @Date: 2021-09-27 11:04:28
  * @LastEditors: 黄宇/Hyuishine
- * @LastEditTime: 2021-10-08 09:43:56
+ * @LastEditTime: 2021-10-12 13:54:29
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -63,6 +63,12 @@
 
                 chartVM.setOption(
                     {
+                        toolbox: {
+                            show: true,
+                            feature: { // 功能
+                                saveAsImage: {} // 保存图片
+                            }
+                        },
                         backgroundColor: '#F6F7F8', // 背景颜色
                         geo: {
                             map: '江西',
