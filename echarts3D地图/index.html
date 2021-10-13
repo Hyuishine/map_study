@@ -1,0 +1,105 @@
+<!--
+ * @Author: 黄宇/Hyuishine
+ * @Date: 2021-10-13 09:24:00
+ * @LastEditors: 黄宇/Hyuishine
+ * @LastEditTime: 2021-10-13 10:37:05
+ * @Description: 
+ * @Email: hyuishine@gmail.com
+ * @Company: 3xData
+ * @youWant: add you want
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>echarts3D 地图</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.9.0-rc.1/echarts-en.common.js"></script>
+    <!-- 3D地图必备 -->
+    <script src="./echarts-gl.min.js"></script>
+    <style>
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+        }
+
+        #chart-panel {
+            height: 100vh;
+            width: 100Vw;
+        }
+
+        #chart-panel>* {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart-panel"></div>
+    <script>
+        $.get('./360000_full.json').then(res => {
+            // 当江西省边界获取到后立即初始化地图
+            drawEchart(res)
+        })
+        function drawEchart(borderData) {
+            var option = {
+                backgroundColor: 'red',
+                geo3D: {
+                    map: '江西',
+                    roam: true,
+                    itemStyle: {
+                        areaColor: 'red',
+                        opacity: 1,
+                        borderWidth: 0.8,
+                        borderColor: 'rgb(62,215,213)',
+                    },
+                    label: {
+                        show: true,
+                    },
+                    emphasis: {
+                        //当鼠标放上去  地区区域是否显示名称
+                        label: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: 3,
+                                backgroundColor: 'rgba(0,23,11,0)',
+                            },
+                        },
+                    },
+                    light: {
+                        main: {
+                            color: '#fff', //光照颜色
+                            intensity: 1.2, //光照强度
+                            shadowQuality: 'high', //阴影亮度
+                            shadow: false, //是否显示阴影
+                            //                        alpha: 55,
+                            beta: 10,
+                        },
+                        ambient: {
+                            intensity: 0.3,
+                        },
+                    },
+                },
+                series: [
+
+                ],
+            };
+
+            let chartVM = echarts.init(
+                document.getElementById("chart-panel")
+            );
+            echarts.registerMap('江西', borderData);
+            chartVM.setOption(option)
+        }
+
+    </script>
+</body>
+
+</html>
